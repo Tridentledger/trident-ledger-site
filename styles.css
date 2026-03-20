@@ -190,9 +190,9 @@ h3 { font-size: clamp(1.15rem, 2vw, 1.35rem); }
   gap: 0.6rem;
 }
 .logo-icon {
-  width: 24px;
+  width: 28px;
   height: 30px;
-  color: var(--color-charcoal);
+  object-fit: contain;
 }
 .logo-text {
   font-family: var(--font-display);
