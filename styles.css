@@ -141,11 +141,28 @@ h3 { font-size: clamp(1.15rem, 2vw, 1.35rem); }
 .btn-primary {
   background: var(--color-charcoal);
   color: var(--color-white);
+  position: relative;
+  overflow: hidden;
+}
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--color-gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s var(--ease-out);
 }
 .btn-primary:hover {
   background: var(--color-slate);
   transform: translateY(-1px);
   box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+.btn-primary:hover::after {
+  transform: scaleX(1);
 }
 
 .btn-ghost {
@@ -299,6 +316,19 @@ h3 { font-size: clamp(1.15rem, 2vw, 1.35rem); }
 .hero-headline {
   margin-bottom: 1.5rem;
   color: var(--color-charcoal);
+  position: relative;
+  padding-bottom: 1.5rem;
+}
+
+.hero-headline::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: var(--color-gold);
+  border-radius: 2px;
 }
 
 .hero-headline-accent {
@@ -406,12 +436,13 @@ h3 { font-size: clamp(1.15rem, 2vw, 1.35rem); }
   border: 1px solid var(--color-border);
   border-radius: 6px;
   padding: 2.25rem 2rem;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
 }
 
 .service-card:hover {
   border-color: var(--color-light-grey);
   box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+  transform: translateY(-2px);
 }
 
 .service-icon {
@@ -481,6 +512,7 @@ h3 { font-size: clamp(1.15rem, 2vw, 1.35rem); }
   padding: var(--section-pad) 0;
   background: var(--color-charcoal);
   color: var(--color-white);
+  border-top: 3px solid var(--color-gold);
 }
 
 .how-it-works .section-eyebrow {
@@ -541,52 +573,6 @@ h3 { font-size: clamp(1.15rem, 2vw, 1.35rem); }
 }
 .steps-cta .btn-primary:hover {
   background: var(--color-gold-light);
-}
-
-/* ========================================
-   WHO I WORK WITH
-   ======================================== */
-.ideal-client {
-  padding: var(--section-pad) 0;
-}
-
-.client-grid {
-  display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  gap: 3rem;
-  margin-top: 2.5rem;
-}
-
-.client-col h3 {
-  font-size: 1.1rem;
-  margin-bottom: 1.25rem;
-  color: var(--color-charcoal);
-}
-
-.client-list li {
-  padding: 0.6rem 0 0.6rem 1.75rem;
-  position: relative;
-  font-size: 0.95rem;
-  color: var(--color-slate);
-  border-bottom: 1px solid var(--color-border);
-  line-height: 1.55;
-}
-
-.client-list--yes li::before {
-  content: '✓';
-  position: absolute;
-  left: 0;
-  color: var(--color-gold);
-  font-weight: 700;
-  font-size: 0.9rem;
-}
-
-.client-list--no li::before {
-  content: '—';
-  position: absolute;
-  left: 0;
-  color: var(--color-warm-grey);
-  font-weight: 400;
 }
 
 /* ========================================
@@ -686,12 +672,13 @@ h3 { font-size: clamp(1.15rem, 2vw, 1.35rem); }
   border: 1px solid rgba(255,255,255,0.08);
   border-radius: 6px;
   padding: 2rem;
-  transition: border-color 0.3s ease, background 0.3s ease;
+  transition: border-color 0.3s ease, background 0.3s ease, transform 0.3s ease;
 }
 
 .tech-card:hover {
   border-color: rgba(255,255,255,0.15);
   background: rgba(255,255,255,0.06);
+  transform: translateY(-2px);
 }
 
 .tech-icon {
@@ -739,6 +726,11 @@ h3 { font-size: clamp(1.15rem, 2vw, 1.35rem); }
   cursor: pointer;
   position: relative;
   list-style: none;
+  transition: color 0.2s ease;
+}
+
+.faq-item summary:hover {
+  color: var(--color-gold);
 }
 
 .faq-item summary::-webkit-details-marker { display: none; }
@@ -822,11 +814,6 @@ h3 { font-size: clamp(1.15rem, 2vw, 1.35rem); }
 
 .contact-book-btn {
   margin-bottom: 0.5rem;
-}
-
-.contact-calendly-note {
-  font-size: 0.8rem;
-  color: var(--color-warm-grey);
 }
 
 /* Form */
@@ -996,7 +983,6 @@ h3 { font-size: clamp(1.15rem, 2vw, 1.35rem); }
   .services-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-  .testimonials-grid,
   .tech-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -1069,16 +1055,11 @@ h3 { font-size: clamp(1.15rem, 2vw, 1.35rem); }
     margin: 0 0 0 2rem;
   }
 
-  .client-grid {
-    grid-template-columns: 1fr;
-  }
-
   .about-layout {
     grid-template-columns: 1fr;
   }
   .about-visual { display: none; }
 
-  .testimonials-grid,
   .tech-grid {
     grid-template-columns: 1fr;
   }
