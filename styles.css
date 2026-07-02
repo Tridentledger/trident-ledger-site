@@ -1,6 +1,6 @@
 /* ========================================
    TRIDENT LEDGER — STYLES
-   Palette: Charcoal / Warm Grey / Gold Accent
+   Palette: Charcoal / Warm Grey — monochrome
    Fonts: DM Serif Display (headlines) + DM Sans (body)
    ======================================== */
 
@@ -19,10 +19,11 @@
   --color-off-white:   #faf9f7;
   --color-white:       #ffffff;
 
-  /* Accent */
-  --color-gold:        #b8943e;
-  --color-gold-light:  #d4b45c;
-  --color-gold-muted:  rgba(184, 148, 62, 0.12);
+  /* Accent — monochrome ink */
+  --color-accent:        #2c2c2c;
+  --color-accent-mid: #55524e;
+  --color-accent-silver:   #b9b6b1;
+  --color-accent-muted:  rgba(26, 26, 26, 0.05);
 
   /* Functional */
   --color-text:        var(--color-charcoal);
@@ -37,7 +38,7 @@
   --font-body:    'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 
   /* Spacing */
-  --section-pad:  clamp(4rem, 8vw, 7rem);
+  --section-pad:  clamp(4.5rem, 9vw, 7.5rem);
   --container:    1140px;
   --gap:          clamp(1.5rem, 3vw, 2.5rem);
 
@@ -74,8 +75,14 @@ a {
 ul { list-style: none; }
 
 ::selection {
-  background: var(--color-gold);
+  background: var(--color-accent);
   color: var(--color-white);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent-mid);
+  outline-offset: 3px;
+  border-radius: 2px;
 }
 
 /* --- Container --- */
@@ -93,17 +100,17 @@ h1, h2, h3 {
   line-height: 1.15;
 }
 
-h1 { font-size: clamp(2.4rem, 5.5vw, 4rem); }
-h2 { font-size: clamp(1.8rem, 3.5vw, 2.6rem); }
+h1 { font-size: clamp(2.5rem, 5.5vw, 4.2rem); letter-spacing: -0.01em; }
+h2 { font-size: clamp(1.8rem, 3.5vw, 2.6rem); letter-spacing: -0.005em; }
 h3 { font-size: clamp(1.15rem, 2vw, 1.35rem); }
 
 .section-eyebrow {
   font-family: var(--font-body);
   font-weight: 500;
   font-size: 0.8rem;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--color-gold);
+  color: var(--color-accent-mid);
   margin-bottom: 0.75rem;
 }
 
@@ -119,6 +126,24 @@ h3 { font-size: clamp(1.15rem, 2vw, 1.35rem); }
   font-size: 1.05rem;
   margin-bottom: 3rem;
 }
+
+/* --- Trident tine rule (brand signature) --- */
+.tine-rule {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 6px;
+  height: 22px;
+  margin-bottom: 1.75rem;
+}
+.tine-rule i {
+  display: block;
+  width: 3px;
+  background: var(--color-accent);
+  border-radius: 2px;
+}
+.tine-rule i:nth-child(1) { height: 14px; }
+.tine-rule i:nth-child(2) { height: 22px; }
+.tine-rule i:nth-child(3) { height: 14px; }
 
 /* --- Buttons --- */
 .btn {
@@ -151,7 +176,7 @@ h3 { font-size: clamp(1.15rem, 2vw, 1.35rem); }
   left: 0;
   width: 100%;
   height: 2px;
-  background: var(--color-gold);
+  background: var(--color-accent-silver);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.3s var(--ease-out);
@@ -159,7 +184,7 @@ h3 { font-size: clamp(1.15rem, 2vw, 1.35rem); }
 .btn-primary:hover {
   background: var(--color-slate);
   transform: translateY(-1px);
-  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  box-shadow: 0 6px 24px rgba(26, 26, 26, 0.18);
 }
 .btn-primary:hover::after {
   transform: scaleX(1);
@@ -171,8 +196,9 @@ h3 { font-size: clamp(1.15rem, 2vw, 1.35rem); }
   border: 1px solid var(--color-light-grey);
 }
 .btn-ghost:hover {
-  border-color: var(--color-charcoal);
-  background: rgba(0,0,0,0.02);
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  background: var(--color-accent-muted);
 }
 
 /* ========================================
@@ -230,7 +256,7 @@ h3 { font-size: clamp(1.15rem, 2vw, 1.35rem); }
   letter-spacing: 0.01em;
 }
 .nav-links a:hover {
-  color: var(--color-charcoal);
+  color: var(--color-accent);
 }
 
 .nav-cta {
@@ -267,10 +293,10 @@ h3 { font-size: clamp(1.15rem, 2vw, 1.35rem); }
    ======================================== */
 .hero {
   position: relative;
-  min-height: 100vh;
+  min-height: 92vh;
   display: flex;
   align-items: center;
-  padding: calc(72px + 3rem) 0 var(--section-pad);
+  padding: calc(72px + 3.5rem) 0 var(--section-pad);
   overflow: hidden;
 }
 
@@ -284,9 +310,11 @@ h3 { font-size: clamp(1.15rem, 2vw, 1.35rem); }
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px);
+    linear-gradient(rgba(26, 26, 26, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(26, 26, 26, 0.035) 1px, transparent 1px);
   background-size: 60px 60px;
+  mask-image: linear-gradient(to bottom, black 40%, transparent 90%);
+  -webkit-mask-image: linear-gradient(to bottom, black 40%, transparent 90%);
 }
 
 .hero-gradient {
@@ -301,38 +329,25 @@ h3 { font-size: clamp(1.15rem, 2vw, 1.35rem); }
 .hero-content {
   position: relative;
   z-index: 1;
-  max-width: 800px;
+  max-width: 820px;
 }
 
 .hero-eyebrow {
   font-weight: 500;
   font-size: 0.8rem;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--color-gold);
+  color: var(--color-accent-mid);
   margin-bottom: 1.5rem;
 }
 
 .hero-headline {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.25rem;
   color: var(--color-charcoal);
-  position: relative;
-  padding-bottom: 1.5rem;
-}
-
-.hero-headline::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 60px;
-  height: 3px;
-  background: var(--color-gold);
-  border-radius: 2px;
 }
 
 .hero-headline-accent {
-  color: var(--color-slate);
+  color: var(--color-accent);
 }
 
 .hero-sub {
@@ -389,32 +404,28 @@ h3 { font-size: clamp(1.15rem, 2vw, 1.35rem); }
 .problem-card {
   background: var(--color-white);
   border: 1px solid var(--color-border);
-  border-radius: 6px;
-  padding: 2rem;
-  position: relative;
+  border-left: 3px solid var(--color-accent-silver);
+  border-radius: 0 6px 6px 0;
+  padding: 1.75rem 2rem;
+  transition: border-left-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.problem-number {
-  font-family: var(--font-display);
-  font-size: 2.5rem;
-  color: var(--color-cream);
-  position: absolute;
-  top: 0.75rem;
-  right: 1.25rem;
-  line-height: 1;
+.problem-card:hover {
+  border-left-color: var(--color-accent);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.05);
 }
 
 .problem-card p {
   font-size: 1.05rem;
   line-height: 1.6;
   color: var(--color-slate);
-  max-width: 340px;
+  max-width: 400px;
 }
 
 .problem-transition {
   font-family: var(--font-display);
   font-size: clamp(1.5rem, 3vw, 2rem);
-  color: var(--color-gold);
+  color: var(--color-accent);
   margin-top: 1rem;
 }
 
@@ -425,10 +436,38 @@ h3 { font-size: clamp(1.15rem, 2vw, 1.35rem); }
   padding: var(--section-pad) 0;
 }
 
+.service-group {
+  margin: 3rem 0 1.75rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid var(--color-border);
+}
+.service-group:first-of-type,
+.services .section-intro + .service-group {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
+}
+
+.service-group-title {
+  font-size: clamp(1.35rem, 2.4vw, 1.65rem);
+  color: var(--color-accent);
+  margin-bottom: 0.35rem;
+}
+
+.service-group-sub {
+  font-size: 0.95rem;
+  color: var(--color-mid-grey);
+  max-width: 540px;
+}
+
 .services-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--gap);
+}
+
+.services-grid--two {
+  grid-template-columns: repeat(2, 1fr);
 }
 
 .service-card {
@@ -440,16 +479,16 @@ h3 { font-size: clamp(1.15rem, 2vw, 1.35rem); }
 }
 
 .service-card:hover {
-  border-color: var(--color-light-grey);
-  box-shadow: 0 8px 30px rgba(0,0,0,0.06);
-  transform: translateY(-2px);
+  border-color: var(--color-accent-silver);
+  box-shadow: 0 10px 32px rgba(26, 26, 26, 0.07);
+  transform: translateY(-3px);
 }
 
 .service-icon {
   width: 40px;
   height: 40px;
   margin-bottom: 1.25rem;
-  color: var(--color-gold);
+  color: var(--color-accent-mid);
 }
 .service-icon svg {
   width: 100%;
@@ -491,15 +530,15 @@ h3 { font-size: clamp(1.15rem, 2vw, 1.35rem); }
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: var(--color-gold);
-  opacity: 0.6;
+  background: var(--color-accent-mid);
+  opacity: 0.55;
 }
 
 .service-outcome {
   font-family: var(--font-display);
   font-style: italic;
   font-size: 0.95rem;
-  color: var(--color-gold);
+  color: var(--color-accent);
   padding-top: 1rem;
   border-top: 1px solid var(--color-border);
   line-height: 1.5;
@@ -512,11 +551,10 @@ h3 { font-size: clamp(1.15rem, 2vw, 1.35rem); }
   padding: var(--section-pad) 0;
   background: var(--color-charcoal);
   color: var(--color-white);
-  border-top: 3px solid var(--color-gold);
 }
 
 .how-it-works .section-eyebrow {
-  color: var(--color-gold-light);
+  color: var(--color-accent-silver);
 }
 
 .how-it-works .section-heading {
@@ -538,14 +576,14 @@ h3 { font-size: clamp(1.15rem, 2vw, 1.35rem); }
 .step-number {
   font-family: var(--font-display);
   font-size: 3rem;
-  color: rgba(255,255,255,0.08);
+  color: rgba(250, 249, 247, 0.10);
   line-height: 1;
   display: block;
   margin-bottom: 1rem;
 }
 
 .step-card h3 {
-  color: var(--color-gold-light);
+  color: var(--color-white);
   margin-bottom: 0.75rem;
   font-size: 1.25rem;
 }
@@ -568,11 +606,12 @@ h3 { font-size: clamp(1.15rem, 2vw, 1.35rem); }
   text-align: center;
 }
 .steps-cta .btn-primary {
-  background: var(--color-gold);
+  background: var(--color-off-white);
   color: var(--color-charcoal);
 }
 .steps-cta .btn-primary:hover {
-  background: var(--color-gold-light);
+  background: var(--color-white);
+  color: var(--color-charcoal);
 }
 
 /* ========================================
@@ -619,7 +658,7 @@ h3 { font-size: clamp(1.15rem, 2vw, 1.35rem); }
   display: block;
   font-family: var(--font-display);
   font-size: 1.5rem;
-  color: var(--color-charcoal);
+  color: var(--color-accent);
   margin-bottom: 0.25rem;
 }
 
@@ -650,7 +689,7 @@ h3 { font-size: clamp(1.15rem, 2vw, 1.35rem); }
 }
 
 .tech-tools .section-eyebrow {
-  color: var(--color-gold-light);
+  color: var(--color-accent-silver);
 }
 
 .tech-tools .section-heading {
@@ -676,7 +715,7 @@ h3 { font-size: clamp(1.15rem, 2vw, 1.35rem); }
 }
 
 .tech-card:hover {
-  border-color: rgba(255,255,255,0.15);
+  border-color: rgba(250, 249, 247, 0.28);
   background: rgba(255,255,255,0.06);
   transform: translateY(-2px);
 }
@@ -685,7 +724,7 @@ h3 { font-size: clamp(1.15rem, 2vw, 1.35rem); }
   width: 36px;
   height: 36px;
   margin-bottom: 1.25rem;
-  color: var(--color-gold-light);
+  color: var(--color-accent-silver);
 }
 .tech-icon svg {
   width: 100%;
@@ -729,8 +768,8 @@ h3 { font-size: clamp(1.15rem, 2vw, 1.35rem); }
   transition: color 0.2s ease;
 }
 
-.faq-item summary:hover {
-  color: var(--color-gold);
+.faq-item summary:hover h3 {
+  color: var(--color-accent);
 }
 
 .faq-item summary::-webkit-details-marker { display: none; }
@@ -742,7 +781,7 @@ h3 { font-size: clamp(1.15rem, 2vw, 1.35rem); }
   top: 50%;
   transform: translateY(-50%);
   font-size: 1.25rem;
-  color: var(--color-warm-grey);
+  color: var(--color-accent-mid);
   font-weight: 300;
   transition: transform 0.3s ease;
 }
@@ -757,6 +796,7 @@ h3 { font-size: clamp(1.15rem, 2vw, 1.35rem); }
   font-size: 1rem;
   color: var(--color-charcoal);
   line-height: 1.4;
+  transition: color 0.2s ease;
 }
 
 .faq-item p {
@@ -809,7 +849,7 @@ h3 { font-size: clamp(1.15rem, 2vw, 1.35rem); }
   font-size: 0.95rem;
   transition: color 0.2s ease;
 }
-.contact-link:hover { color: var(--color-gold); }
+.contact-link:hover { color: var(--color-accent); }
 .contact-link svg { width: 20px; height: 20px; flex-shrink: 0; }
 
 .contact-book-btn {
@@ -863,8 +903,8 @@ h3 { font-size: clamp(1.15rem, 2vw, 1.35rem); }
 .contact-form select:focus,
 .contact-form textarea:focus {
   outline: none;
-  border-color: var(--color-gold);
-  box-shadow: 0 0 0 3px var(--color-gold-muted);
+  border-color: var(--color-accent-mid);
+  box-shadow: 0 0 0 3px var(--color-accent-muted);
 }
 
 .contact-form textarea {
@@ -922,7 +962,7 @@ h3 { font-size: clamp(1.15rem, 2vw, 1.35rem); }
   color: rgba(255,255,255,0.5);
   transition: color 0.2s ease;
 }
-.footer-nav a:hover { color: rgba(255,255,255,0.9); }
+.footer-nav a:hover { color: var(--color-accent-silver); }
 
 .footer-contact a {
   font-size: 0.85rem;
@@ -931,7 +971,7 @@ h3 { font-size: clamp(1.15rem, 2vw, 1.35rem); }
   margin-bottom: 0.35rem;
   transition: color 0.2s ease;
 }
-.footer-contact a:hover { color: rgba(255,255,255,0.9); }
+.footer-contact a:hover { color: var(--color-accent-silver); }
 
 .footer-legal {
   grid-column: 1 / -1;
@@ -976,11 +1016,29 @@ h3 { font-size: clamp(1.15rem, 2vw, 1.35rem); }
   transform: translateY(0);
 }
 
+/* Reduced motion — show everything, skip movement */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .anim-fade-up,
+  .anim-scroll {
+    opacity: 1;
+    transform: none;
+    animation: none;
+    transition: none;
+  }
+  .btn, .service-card, .tech-card, .problem-card {
+    transition: none;
+  }
+}
+
 /* ========================================
    RESPONSIVE
    ======================================== */
 @media (max-width: 1024px) {
   .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .services-grid--two {
     grid-template-columns: repeat(2, 1fr);
   }
   .tech-grid {
@@ -1041,7 +1099,8 @@ h3 { font-size: clamp(1.15rem, 2vw, 1.35rem); }
     grid-template-columns: 1fr;
   }
 
-  .services-grid {
+  .services-grid,
+  .services-grid--two {
     grid-template-columns: 1fr;
   }
 
