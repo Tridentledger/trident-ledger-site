@@ -1228,3 +1228,147 @@ h3 { font-size: clamp(1.15rem, 2vw, 1.35rem); }
     gap: 1.5rem;
   }
 }
+
+/* ========================================
+   IMPROVEMENTS — added Jul 28, 2026
+   Appended as one block so it is easy to
+   review, and easy to revert by deleting.
+   ======================================== */
+
+/* --- Skip link (keyboard users bypass the nav) --- */
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -100px;
+  z-index: 3000;
+  padding: 0.75rem 1.25rem;
+  background: var(--color-charcoal);
+  color: var(--color-off-white);
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: top 0.2s var(--ease-out);
+}
+.skip-link:focus-visible {
+  top: 1rem;
+  outline: 2px solid var(--color-off-white);
+  outline-offset: 2px;
+}
+main:focus { outline: none; }
+
+/* --- Stronger, higher-contrast focus ring --- */
+:focus-visible {
+  outline: 2px solid var(--color-charcoal);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+.nav-cta:focus-visible,
+.btn-primary:focus-visible {
+  outline-color: var(--color-charcoal);
+  outline-offset: 4px;
+}
+.faq-item summary:focus-visible {
+  outline: 2px solid var(--color-charcoal);
+  outline-offset: 4px;
+  border-radius: 3px;
+}
+
+/* --- About mark (was an inline style attribute) --- */
+.about-mark {
+  width: 100%;
+  max-width: 240px;
+  margin: 0 auto;
+  display: block;
+  opacity: 0.18;
+  height: auto;
+}
+
+/* --- Header elevation, driven by a class not inline JS styles --- */
+.site-header { transition: background 0.3s ease, box-shadow 0.3s ease; }
+.site-header.is-scrolled { box-shadow: 0 1px 10px rgba(0, 0, 0, 0.05); }
+
+/* --- Mobile toggle becomes an X when open --- */
+.nav-toggle span { transition: transform 0.3s var(--ease-out), opacity 0.2s ease; }
+.nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* --- Spam honeypot: hidden from people, visible to bots --- */
+.form-hp {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* --- Form: required marker, intro, inline errors, status --- */
+.form-intro {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  margin-bottom: 1.25rem;
+  line-height: 1.6;
+}
+.label-req { color: var(--color-mid-grey); }
+
+.field-error {
+  font-size: 0.78rem;
+  color: #a8342a;
+  margin-top: 0.35rem;
+  line-height: 1.4;
+}
+.field-error[hidden] { display: none; }
+
+.contact-form input[aria-invalid="true"],
+.contact-form select[aria-invalid="true"],
+.contact-form textarea[aria-invalid="true"] {
+  border-color: #a8342a;
+  background: #fdf7f6;
+}
+.contact-form input[aria-invalid="true"]:focus,
+.contact-form textarea[aria-invalid="true"]:focus {
+  border-color: #a8342a;
+  box-shadow: 0 0 0 3px rgba(168, 52, 42, 0.12);
+}
+
+.form-status {
+  grid-column: 1 / -1;
+  font-size: 0.88rem;
+  line-height: 1.55;
+  border-radius: 4px;
+  padding: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s var(--ease-out), padding 0.35s var(--ease-out);
+}
+.form-status.is-visible {
+  padding: 0.85rem 1rem;
+  max-height: 260px;
+}
+.form-status.is-success {
+  background: var(--color-cream);
+  border-left: 3px solid var(--color-charcoal);
+  color: var(--color-charcoal);
+}
+.form-status.is-error {
+  background: #fdf7f6;
+  border-left: 3px solid #a8342a;
+  color: #7d2a22;
+}
+
+/* Submitting state */
+.btn-submit[aria-busy="true"] { opacity: 0.65; pointer-events: none; }
+
+/* --- Sent state: swap the form out for a confirmation --- */
+.contact-form.is-sent > *:not(.form-status) { display: none; }
+
+/* --- Respect reduced-motion for the grain overlay too --- */
+@media (prefers-reduced-motion: reduce) {
+  .skip-link,
+  .form-status,
+  .nav-toggle span { transition: none; }
+}
