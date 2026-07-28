@@ -369,7 +369,7 @@ h3 { font-size: clamp(1.15rem, 2vw, 1.35rem); }
   opacity: 0.05;
   filter: grayscale(1) contrast(0.9);
 }
-.hero-mark img { width: 100%; }
+.hero-mark img { width: 100%; height: auto; }
 
 .hero-content {
   position: relative;
@@ -1372,3 +1372,10 @@ main:focus { outline: none; }
   .form-status,
   .nav-toggle span { transition: none; }
 }
+
+/* --- Safety net ---------------------------------------------
+   width/height attributes on <img> map to CSS presentational
+   hints. Any image whose width is set in CSS therefore needs an
+   explicit height:auto or it renders distorted. --------------- */
+.hero-mark img,
+.about-mark { height: auto; }
