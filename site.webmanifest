@@ -1,11 +1,11 @@
 {
   "name": "Trident Ledger",
   "short_name": "Trident Ledger",
-  "description": "Fractional controller and bookkeeping services for growing businesses.",
+  "description": "Fractional controller and bookkeeping for growing businesses. Based in New Jersey.",
   "start_url": "/",
   "display": "browser",
-  "background_color": "#faf9f7",
-  "theme_color": "#1a1a1a",
+  "background_color": "#07090d",
+  "theme_color": "#07090d",
   "icons": [
     { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
     { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" }

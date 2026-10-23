@@ -1,698 +1,726 @@
-<!-- ============================================================
-     TRIDENT LEDGER — IMPROVED BUILD (candidate, not yet deployed)
-     Based on the live index verified Jul 28, 2026.
-     See CHANGES.md in this folder for every change made.
-     ============================================================ -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    document.documentElement.classList.add("js");
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      document.documentElement.classList.add("reduce-motion");
+    }
+  </script>
+  <title>Fractional Controller &amp; Bookkeeping | Trident Ledger</title>
+  <meta name="description" content="New Jersey fractional controller and bookkeeping for growing businesses ($2M–$30M). Reporting, cash flow, payroll, and financial leadership from Trident Ledger.">
   <meta name="robots" content="index, follow">
-  <title>Fractional Controller &amp; Bookkeeping Services | Trident Ledger</title>
-  <meta name="description" content="Trident Ledger delivers fractional controller and bookkeeping services to growing businesses ($2M–$30M). Executive-level reporting, cash flow management, payroll, and strategic financial guidance — without the full-time cost.">
+  <meta name="author" content="Trident Ledger, LLC">
+  <meta name="geo.region" content="US-NJ">
+  <meta name="theme-color" content="#07090d">
   <link rel="canonical" href="https://tridentledger.com/">
-  <meta name="theme-color" content="#1a1a1a">
 
-  <!-- Icons -->
   <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
   <link rel="icon" href="/icon-192.png" sizes="192x192" type="image/png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="Fractional Controller &amp; Bookkeeping Services | Trident Ledger">
-  <meta property="og:description" content="Executive-level financial leadership and bookkeeping for growing businesses. Fractional controller services, cash flow management, payroll, and strategic guidance — at a fraction of the cost.">
+  <meta property="og:title" content="Fractional Controller &amp; Bookkeeping | Trident Ledger">
+  <meta property="og:description" content="Executive-level financial leadership and bookkeeping for growing businesses. Fractional controller services, cash flow, payroll, and strategic guidance — at a fraction of the cost.">
   <meta property="og:url" content="https://tridentledger.com/">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://tridentledger.com/og-image.png">
-  <meta property="og:site_name" content="Trident Ledger">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Trident Ledger — fractional controller and bookkeeping services for businesses $2M–$30M.">
+  <meta property="og:site_name" content="Trident Ledger">
   <meta property="og:locale" content="en_US">
 
-  <!-- Twitter / X -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Fractional Controller &amp; Bookkeeping Services | Trident Ledger">
+  <meta name="twitter:title" content="Fractional Controller &amp; Bookkeeping | Trident Ledger">
   <meta name="twitter:description" content="Executive-level financial leadership and bookkeeping for growing businesses — at a fraction of the cost of a full-time hire.">
   <meta name="twitter:image" content="https://tridentledger.com/og-image.png">
+  <meta name="twitter:image:alt" content="Trident Ledger — fractional controller and bookkeeping services for businesses $2M–$30M.">
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&amp;family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&amp;display=swap" rel="stylesheet">
+  <link rel="preload" href="fonts/fraunces-roman.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/fraunces-italic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/outfit-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="logo.png" as="image">
 
   <link rel="stylesheet" href="styles.css">
 
-  <!-- Schema Markup -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    "name": "Trident Ledger, LLC",
-    "description": "Fractional controller, bookkeeping, and financial leadership services for growing businesses. Modern accounting powered by technology and AI.",
-    "url": "https://tridentledger.com",
-    "telephone": "(732) 322-7615",
-    "email": "ryan@tridentledger.com",
-    "founder": {
-      "@type": "Person",
-      "name": "Ryan Wallace",
-      "jobTitle": "Founder & Fractional Controller",
-      "description": "MBA and career controller. Founded Trident Ledger to deliver modern, technology-driven financial leadership to growing businesses."
-    },
-    "areaServed": {
-      "@type": "Country",
-      "name": "United States"
-    },
-    "serviceType": [
-      "Fractional Controller Services",
-      "Bookkeeping Services",
-      "Financial Reporting",
-      "Cash Flow Management",
-      "Budgeting and Financial Planning",
-      "Payroll Processing",
-      "Sales Tax Filing and Compliance",
-      "Accounting Systems Implementation",
-      "CFO Advisory Services"
-    ],
-    "priceRange": "$$"
-  }
-  </script>
-
-  <!-- FAQ Schema — generated from the FAQ section below; keep in sync if copy changes -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
+    "@graph": [
       {
-        "@type": "Question",
-        "name": "What's the difference between a fractional controller and a bookkeeper?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "A bookkeeper records transactions and keeps your books up to date. A controller interprets those numbers, manages the close process, builds forecasts, and provides the financial leadership to drive decisions. Think of it this way: a bookkeeper tells you what happened. A controller tells you what it means and what to do next."
+        "@type": "AccountingService",
+        "@id": "https://tridentledger.com/#business",
+        "name": "Trident Ledger, LLC",
+        "alternateName": "Trident Ledger",
+        "url": "https://tridentledger.com/",
+        "image": "https://tridentledger.com/og-image.png",
+        "logo": "https://tridentledger.com/logo.png",
+        "telephone": "+1-732-322-7615",
+        "email": "ryan@tridentledger.com",
+        "priceRange": "$$",
+        "description": "Fractional controller, bookkeeping, and financial leadership services for growing businesses. Modern accounting powered by technology and AI. Based in New Jersey and working with clients nationwide.",
+        "founder": {
+          "@type": "Person",
+          "name": "Ryan Wallace",
+          "jobTitle": "Founder & Fractional Controller",
+          "description": "MBA and career controller with 14 years of controller experience. Founded Trident Ledger to deliver modern, technology-driven financial leadership to growing businesses."
+        },
+        "address": {
+          "@type": "PostalAddress",
+          "addressRegion": "NJ",
+          "addressCountry": "US"
+        },
+        "areaServed": [
+          { "@type": "AdministrativeArea", "name": "New Jersey" },
+          { "@type": "Country", "name": "United States" }
+        ],
+        "serviceType": [
+          "Fractional Controller Services",
+          "Bookkeeping Services",
+          "Financial Reporting",
+          "Cash Flow Management",
+          "Budgeting and Financial Planning",
+          "Payroll Processing",
+          "Sales Tax Filing and Compliance",
+          "Accounting Systems Implementation",
+          "CFO Advisory Services"
+        ],
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Controller, bookkeeping, and advisory services",
+          "itemListElement": [
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Monthly Close & Financial Reporting" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Cash Flow Management & Forecasting" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Budgeting & Financial Planning" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Accounting Team Oversight" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Systems Implementation & Cleanup" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "CFO-Level Strategic Support" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Full-Charge Bookkeeping" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Payroll Processing & Support" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Sales Tax Filing & Compliance" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Catch-Up & Cleanup Bookkeeping" } }
+          ]
         }
       },
       {
-        "@type": "Question",
-        "name": "How much does this cost?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Every engagement is scoped to fit your business. Most clients invest between $3,000 and $8,000 per month depending on complexity, volume, and the level of strategic support they need. We'll give you a clear, fixed quote after the discovery call — no hidden fees, no hourly surprises."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How many hours per month do I need?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "It depends on your business. Some clients need 15–20 hours a month for close and reporting. Others need 30–40+ hours for deeper financial planning and team oversight. We'll recommend the right level during the discovery call — and we can always adjust as your needs change."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Will you work with my existing accounting team?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Absolutely. That's one of the things we do best. We'll manage and mentor your bookkeepers, set up quality controls, and fill the gaps in your current team — not replace people who are doing good work."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What accounting software do you support?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "We work with QuickBooks Online, QuickBooks Desktop, NetSuite, Xero, and Sage. If you're on a different platform, let's talk — our team has worked across most major systems and can adapt quickly."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How quickly can we get started?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Most engagements are up and running within 1–2 weeks of signing the agreement. If your books are in rough shape, we may start with a cleanup phase before moving into ongoing services. Either way, you'll see progress fast."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Do we replace your CPA?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "No — and we'll make their life a lot easier. Trident Ledger is not a CPA firm, but we work closely with your tax preparer to make sure they have clean, organized financials at year-end. Many of our clients tell us their CPA fees went down after working with us because the books are in much better shape."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What if my books are a mess?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "That's not a dealbreaker — it's actually one of the most common starting points. We'll assess the damage, put together a cleanup plan, and get your books in shape before transitioning to ongoing monthly services. It's what we do."
-        }
+        "@type": "FAQPage",
+        "@id": "https://tridentledger.com/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What's the difference between a fractional controller and a bookkeeper?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A bookkeeper records transactions and keeps your books up to date. A controller interprets those numbers, manages the close process, builds forecasts, and provides the financial leadership to drive decisions. Think of it this way: a bookkeeper tells you what happened. A controller tells you what it means and what to do next."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How much does this cost?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Every engagement is scoped to fit your business. Most clients invest between $3,000 and $8,000 per month depending on complexity, volume, and the level of strategic support they need. We'll give you a clear, fixed quote after the discovery call — no hidden fees, no hourly surprises."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How many hours per month do I need?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "It depends on your business. Some clients need 15–20 hours a month for close and reporting. Others need 30–40+ hours for deeper financial planning and team oversight. We'll recommend the right level during the discovery call — and we can always adjust as your needs change."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Will you work with my existing accounting team?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Absolutely. That's one of the things we do best. We'll manage and mentor your bookkeepers, set up quality controls, and fill the gaps in your current team — not replace people who are doing good work."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What accounting software do you support?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "We work with QuickBooks Online, QuickBooks Desktop, NetSuite, Xero, and Sage. If you're on a different platform, let's talk — our team has worked across most major systems and can adapt quickly."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How quickly can we get started?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Most engagements are up and running within 1–2 weeks of signing the agreement. If your books are in rough shape, we may start with a cleanup phase before moving into ongoing services. Either way, you'll see progress fast."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do we replace your CPA?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No — and we'll make their life a lot easier. Trident Ledger is not a CPA firm, but we work closely with your tax preparer to make sure they have clean, organized financials at year-end. Many of our clients tell us their CPA fees went down after working with us because the books are in much better shape."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What if my books are a mess?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "That's not a dealbreaker — it's actually one of the most common starting points. We'll assess the damage, put together a cleanup plan, and get your books in shape before transitioning to ongoing monthly services. It's what we do."
+            }
+          }
+        ]
       }
     ]
   }
   </script>
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <div class="grain" aria-hidden="true"></div>
 
-  <a href="#main" class="skip-link">Skip to main content</a>
-
-  <!-- ============ NAVIGATION ============ -->
   <header class="site-header" id="top">
-    <nav class="nav-container" aria-label="Main navigation">
-      <a href="#top" class="logo" aria-label="Trident Ledger — Home">
-        <img src="logo-small.png" alt="Trident Ledger logo" class="logo-icon" width="28" height="30" loading="eager">
-        <span class="logo-text">Trident Ledger</span>
+    <nav class="nav" aria-label="Main">
+      <a class="logo" href="#top">
+        <img class="logo-img" src="logo-small.png" alt="" width="200" height="214">
+        <span class="logo-word">Trident Ledger</span>
       </a>
-      <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="primary-nav">
-        <span></span><span></span><span></span>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">
+        <span class="nav-toggle-bars" aria-hidden="true"><span></span><span></span><span></span></span>
+        <span class="nav-toggle-label">Menu</span>
       </button>
       <ul class="nav-links" id="primary-nav">
         <li><a href="#services">Services</a></li>
-        <li><a href="#how-it-works">How It Works</a></li>
+        <li><a href="#who">Who</a></li>
+        <li><a href="#how-it-works">Process</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#technology">Technology</a></li>
         <li><a href="#faq">FAQ</a></li>
-        <li><a href="#contact" class="nav-cta">Schedule a Call</a></li>
+        <li><a class="btn btn-primary nav-cta" href="#contact">Schedule a Call</a></li>
       </ul>
     </nav>
   </header>
 
   <main id="main" tabindex="-1">
-
-    <!-- ============ HERO ============ -->
     <section class="hero" aria-labelledby="hero-heading">
-      <div class="hero-bg" aria-hidden="true">
-        <div class="hero-grid"></div>
-        <div class="hero-glow"></div>
-        <div class="hero-mark"><img src="logo.png" alt="" width="946" height="1013" loading="eager" decoding="async" style="height:auto;"></div>
-        <div class="hero-gradient"></div>
+      <div class="hero-atmosphere" aria-hidden="true"></div>
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow hero-rise">
+            <span class="tines" aria-hidden="true"><i></i><i></i><i></i></span>
+            Fractional Controller &amp; Bookkeeping
+          </p>
+          <h1 id="hero-heading">
+            <span class="h1-line hero-rise d1">Stop flying</span>
+            <span class="h1-line h1-em hero-rise d2">blind.</span>
+            <span class="h1-accent hero-rise d3">Start making decisions with real financial clarity.</span>
+          </h1>
+          <p class="hero-sub hero-rise d4">Trident Ledger delivers the financial rigor and executive-level reporting of a Fortune 500 finance department — embedded in your business, at a fraction of the cost.</p>
+          <div class="hero-ctas hero-rise d5">
+            <a class="btn btn-primary" href="#contact">Schedule a Free Discovery Call</a>
+            <a class="btn btn-ghost" href="#services">See What We Do</a>
+          </div>
+        </div>
+        <div class="hero-mark-wrap hero-rise d2" aria-hidden="true">
+          <div class="hero-mark"></div>
+        </div>
       </div>
-      <div class="container hero-content">
-        <p class="hero-eyebrow anim-fade-up">Fractional Controller &amp; Bookkeeping Services</p>
-        <h1 id="hero-heading" class="hero-headline anim-fade-up anim-delay-1">
-          Stop flying blind.<br>
-          <span class="hero-headline-accent">Start making decisions with real financial clarity.</span>
-        </h1>
-        <span class="tine-rule anim-fade-up anim-delay-1" aria-hidden="true"><i></i><i></i><i></i></span>
-        <p class="hero-sub anim-fade-up anim-delay-2">
-          Trident Ledger delivers the financial rigor and executive-level reporting of a Fortune 500 finance department — embedded in your business, at a fraction of the cost.
-        </p>
-        <div class="hero-ctas anim-fade-up anim-delay-3">
-          <a href="#contact" class="btn btn-primary">Schedule a Free Discovery Call</a>
-          <a href="#services" class="btn btn-ghost">See What We Do</a>
-        </div>
-        <div class="hero-proof anim-fade-up anim-delay-4">
-          <span class="hero-proof-item">Bookkeeping &amp; Controller Services</span>
-          <span class="hero-proof-divider" aria-hidden="true"></span>
-          <span class="hero-proof-item">Serving Businesses $2M–$30M</span>
-          <span class="hero-proof-divider" aria-hidden="true"></span>
-          <span class="hero-proof-item">Nationwide &amp; Remote</span>
-        </div>
+      <div class="wrap">
+        <ul class="proof hero-rise d6" aria-label="At a glance">
+          <li><span class="proof-num" aria-hidden="true">01</span> Bookkeeping &amp; Controller Services</li>
+          <li><span class="proof-num" aria-hidden="true">02</span> Serving Businesses $2M–$30M</li>
+          <li><span class="proof-num" aria-hidden="true">03</span> Nationwide &amp; Remote</li>
+          <li><span class="proof-num" aria-hidden="true">04</span> Based in New Jersey</li>
+        </ul>
       </div>
     </section>
 
-    <!-- ============ THE PROBLEM ============ -->
-    <section class="problem" id="problem" aria-labelledby="problem-heading">
-      <div class="container">
-        <p class="section-eyebrow anim-scroll">Sound familiar?</p>
-        <h2 id="problem-heading" class="section-heading anim-scroll">Your business has outgrown its financial setup.</h2>
-        <div class="problem-grid">
-          <div class="problem-card anim-scroll">
+    <section class="band band-paper problem" id="problem" aria-labelledby="problem-heading">
+      <div class="wrap">
+        <p class="eyebrow reveal">Sound familiar?</p>
+        <h2 id="problem-heading" class="reveal">Your business has outgrown its financial setup.</h2>
+        <ol class="problem-list">
+          <li class="reveal">
             <p>Month-end close takes weeks — and you still don't trust the numbers.</p>
-          </div>
-          <div class="problem-card anim-scroll">
+          </li>
+          <li class="reveal">
             <p>Your bookkeeper gives you reports, but no one is interpreting them for you.</p>
-          </div>
-          <div class="problem-card anim-scroll">
+          </li>
+          <li class="reveal">
             <p>You're making big decisions — hiring, pricing, expansion — on gut instinct alone.</p>
-          </div>
-          <div class="problem-card anim-scroll">
+          </li>
+          <li class="reveal">
             <p>Your accountant only shows up at tax time. The other eleven months? You're on your own.</p>
-          </div>
-        </div>
-        <p class="problem-transition anim-scroll">There's a better way.</p>
+          </li>
+        </ol>
+        <p class="turn reveal">There's a better way.</p>
       </div>
     </section>
 
-    <!-- ============ SERVICES ============ -->
-    <section class="services" id="services" aria-labelledby="services-heading">
-      <div class="container">
-        <p class="section-eyebrow anim-scroll">What We Do</p>
-        <h2 id="services-heading" class="section-heading anim-scroll">Bookkeeping, controller services, and financial leadership that actually moves the needle.</h2>
-        <p class="section-intro anim-scroll">From day-to-day bookkeeping to CFO-level strategy — every engagement is tailored to where your business is and where it's headed.</p>
+    <section class="band band-ink who" id="who" aria-labelledby="who-heading">
+      <div class="wrap">
+        <p class="eyebrow reveal">Who we work with</p>
+        <h2 id="who-heading" class="reveal">Built for growing businesses that need real financial leadership.</h2>
+        <div class="who-grid">
+          <div class="reveal">
+            <h3>Ideal Clients</h3>
+            <ul class="mark-list">
+              <li>Businesses doing <strong>$2M–$30M</strong> in annual revenue</li>
+              <li>Professional services, SaaS, tech, manufacturing, distribution</li>
+              <li>Healthcare services, construction, and trade businesses</li>
+              <li>Companies in rapid growth mode that have outgrown their bookkeeper</li>
+              <li>PE-backed companies needing investor-grade reporting</li>
+              <li>Businesses transitioning from a bookkeeper-only setup to a real finance function</li>
+            </ul>
+          </div>
+          <div class="reveal">
+            <h3>Probably Not a Fit</h3>
+            <ul class="mark-list mark-list-quiet">
+              <li>Pre-revenue startups still in the idea stage</li>
+              <li>Large enterprises with a full internal finance team</li>
+              <li>Businesses that only need occasional data entry (we can refer you to someone great)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        <div class="service-group anim-scroll">
-          <h3 class="service-group-title">Controller &amp; Advisory</h3>
-          <p class="service-group-sub">Financial leadership, oversight, and the numbers behind every big decision.</p>
+    <section class="band band-paper services" id="services" aria-labelledby="services-heading">
+      <div class="wrap">
+        <p class="eyebrow reveal">What we do</p>
+        <h2 id="services-heading" class="reveal">Bookkeeping, controller services, and financial leadership that actually moves the needle.</h2>
+        <p class="lede reveal">From day-to-day bookkeeping to CFO-level strategy — every engagement is tailored to where your business is and where it's headed.</p>
+
+        <div class="service-group reveal">
+          <h3>Controller &amp; Advisory</h3>
+          <p>Financial leadership, oversight, and the numbers behind every big decision.</p>
         </div>
 
-        <div class="services-grid">
-
-          <article class="service-card anim-scroll">
-            <div class="service-icon" aria-hidden="true">
-              <svg viewBox="0 0 32 32"><path d="M4 28V8h24v20M4 8l4-4h16l4 4M12 14h8M12 20h5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
-            </div>
-            <h3>Monthly Close &amp; Financial Reporting</h3>
+        <article class="service reveal">
+          <p class="service-num" aria-hidden="true">01</p>
+          <div class="service-body">
+            <h4>Monthly Close &amp; Financial Reporting</h4>
             <p class="service-lead">A clean, timely close and financial statements you can actually use — delivered to you, not chased down.</p>
             <ul>
               <li>Full month-end close process managed start to finish</li>
               <li>Board-ready P&amp;L, balance sheet, and cash flow statements</li>
               <li>Variance commentary so you know <em>why</em> the numbers moved</li>
             </ul>
-            <p class="service-outcome">You'll finally know exactly where your business stands — every single month.</p>
-          </article>
+          </div>
+          <p class="service-outcome">You'll finally know exactly where your business stands — every single month.</p>
+        </article>
 
-          <article class="service-card anim-scroll">
-            <div class="service-icon" aria-hidden="true">
-              <svg viewBox="0 0 32 32"><path d="M4 24l9-9 5 5 10-10M21 10h7M28 10v7" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </div>
-            <h3>Cash Flow Management &amp; Forecasting</h3>
+        <article class="service reveal">
+          <p class="service-num" aria-hidden="true">02</p>
+          <div class="service-body">
+            <h4>Cash Flow Management &amp; Forecasting</h4>
             <p class="service-lead">See what's coming before it hits. A rolling cash flow model that keeps you ahead of every crunch.</p>
             <ul>
               <li>13-week rolling cash flow forecast, updated weekly</li>
               <li>Scenario modeling for major decisions and seasonal swings</li>
               <li>Early warning system for shortfalls — weeks, not days, in advance</li>
             </ul>
-            <p class="service-outcome">You'll never be blindsided by a cash crisis again.</p>
-          </article>
+          </div>
+          <p class="service-outcome">You'll never be blindsided by a cash crisis again.</p>
+        </article>
 
-          <article class="service-card anim-scroll">
-            <div class="service-icon" aria-hidden="true">
-              <svg viewBox="0 0 32 32"><path d="M6 6h20v20H6zM6 12h20M12 6v20" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
-            </div>
-            <h3>Budgeting &amp; Financial Planning</h3>
+        <article class="service reveal">
+          <p class="service-num" aria-hidden="true">03</p>
+          <div class="service-body">
+            <h4>Budgeting &amp; Financial Planning</h4>
             <p class="service-lead">Budgets that drive decisions — not binders that collect dust on a shelf.</p>
             <ul>
               <li>Annual operating budgets built with your leadership team</li>
               <li>Monthly budget-vs-actual variance analysis with action items</li>
               <li>Rolling forecasts that adapt as your business changes</li>
             </ul>
-            <p class="service-outcome">You'll have a financial roadmap that actually gets used.</p>
-          </article>
+          </div>
+          <p class="service-outcome">You'll have a financial roadmap that actually gets used.</p>
+        </article>
 
-          <article class="service-card anim-scroll">
-            <div class="service-icon" aria-hidden="true">
-              <svg viewBox="0 0 32 32"><circle cx="16" cy="10" r="4" stroke="currentColor" stroke-width="1.5" fill="none"/><circle cx="8" cy="22" r="3" stroke="currentColor" stroke-width="1.5" fill="none"/><circle cx="24" cy="22" r="3" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M16 14v3l-6 3M16 17l6 3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
-            </div>
-            <h3>Accounting Team Oversight</h3>
+        <article class="service reveal">
+          <p class="service-num" aria-hidden="true">04</p>
+          <div class="service-body">
+            <h4>Accounting Team Oversight</h4>
             <p class="service-lead">We manage your bookkeepers and accounting staff so you don't have to — and catch errors before they compound.</p>
             <ul>
               <li>Supervision, training, and quality control for your existing team</li>
               <li>Process documentation and workflow optimization</li>
               <li>Hiring support when it's time to grow the finance function</li>
             </ul>
-            <p class="service-outcome">You'll have an accounting team that runs like a well-oiled machine.</p>
-          </article>
+          </div>
+          <p class="service-outcome">You'll have an accounting team that runs like a well-oiled machine.</p>
+        </article>
 
-          <article class="service-card anim-scroll">
-            <div class="service-icon" aria-hidden="true">
-              <svg viewBox="0 0 32 32"><rect x="6" y="10" width="20" height="14" rx="2" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M10 6h12M12 6v4M20 6v4M12 17h8M12 21h4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
-            </div>
-            <h3>Systems Implementation &amp; Cleanup</h3>
+        <article class="service reveal">
+          <p class="service-num" aria-hidden="true">05</p>
+          <div class="service-body">
+            <h4>Systems Implementation &amp; Cleanup</h4>
             <p class="service-lead">Your accounting software should work <em>for</em> you. We'll make sure it does — or find one that will.</p>
             <ul>
               <li>QuickBooks, NetSuite, Xero, and Sage — evaluation, setup, and migration</li>
               <li>Chart of accounts restructuring and cleanup</li>
               <li>Integrations, automation, and workflow streamlining</li>
             </ul>
-            <p class="service-outcome">You'll have a financial system that's clean, fast, and built to scale.</p>
-          </article>
+          </div>
+          <p class="service-outcome">You'll have a financial system that's clean, fast, and built to scale.</p>
+        </article>
 
-          <article class="service-card anim-scroll">
-            <div class="service-icon" aria-hidden="true">
-              <svg viewBox="0 0 32 32"><path d="M16 4l3 6h7l-5.5 4.5L22 22l-6-4-6 4 1.5-7.5L6 10h7l3-6z" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linejoin="round"/></svg>
-            </div>
-            <h3>CFO-Level Strategic Support</h3>
+        <article class="service reveal">
+          <p class="service-num" aria-hidden="true">06</p>
+          <div class="service-body">
+            <h4>CFO-Level Strategic Support</h4>
             <p class="service-lead">Senior financial thinking for the moments that matter most — without the senior financial salary.</p>
             <ul>
               <li>Unit economics, margin analysis, and pricing strategy</li>
               <li>Investor-ready reporting, bank covenant compliance, and lender relations</li>
               <li>Scenario modeling for acquisitions, expansion, and capital decisions</li>
             </ul>
-            <p class="service-outcome">You'll walk into every big decision with the numbers to back it up.</p>
-          </article>
+          </div>
+          <p class="service-outcome">You'll walk into every big decision with the numbers to back it up.</p>
+        </article>
 
+        <div class="service-group reveal">
+          <h3>Bookkeeping &amp; Compliance</h3>
+          <p>The disciplined, reliable foundation every set of clean financials is built on.</p>
         </div>
 
-        <div class="service-group service-group--second anim-scroll">
-          <h3 class="service-group-title">Bookkeeping &amp; Compliance</h3>
-          <p class="service-group-sub">The disciplined, reliable foundation every set of clean financials is built on.</p>
-        </div>
-
-        <div class="services-grid services-grid--two">
-
-          <article class="service-card anim-scroll">
-            <div class="service-icon" aria-hidden="true">
-              <svg viewBox="0 0 32 32"><path d="M4 6h24v22H4zM4 12h24M10 6v6M10 16h4M10 20h8M18 16h4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
-            </div>
-            <h3>Full-Charge Bookkeeping</h3>
+        <article class="service reveal">
+          <p class="service-num" aria-hidden="true">07</p>
+          <div class="service-body">
+            <h4>Full-Charge Bookkeeping</h4>
             <p class="service-lead">Accurate, up-to-date books — every account reconciled, every transaction where it belongs, every month.</p>
             <ul>
               <li>Accounts payable and accounts receivable management</li>
               <li>Bank and credit card reconciliations — monthly, no exceptions</li>
               <li>General ledger maintenance and journal entries</li>
             </ul>
-            <p class="service-outcome">You'll have books you can actually trust — not a black box you're afraid to open.</p>
-          </article>
+          </div>
+          <p class="service-outcome">You'll have books you can actually trust — not a black box you're afraid to open.</p>
+        </article>
 
-          <article class="service-card anim-scroll">
-            <div class="service-icon" aria-hidden="true">
-              <svg viewBox="0 0 32 32"><path d="M8 4h16v24H8zM12 10h8M12 14h8M12 18h5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/><circle cx="22" cy="22" r="6" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M22 19v3h3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
-            </div>
-            <h3>Payroll Processing &amp; Support</h3>
+        <article class="service reveal">
+          <p class="service-num" aria-hidden="true">08</p>
+          <div class="service-body">
+            <h4>Payroll Processing &amp; Support</h4>
             <p class="service-lead">Payroll that runs on time, every time — with the compliance details handled so you don't have to think about them.</p>
             <ul>
               <li>End-to-end payroll processing and direct deposit coordination</li>
               <li>Payroll tax filings and year-end W-2 / 1099 preparation</li>
               <li>PTO tracking, benefit deductions, and new hire onboarding support</li>
             </ul>
-            <p class="service-outcome">You'll stop worrying about payroll and start focusing on running your business.</p>
-          </article>
+          </div>
+          <p class="service-outcome">You'll stop worrying about payroll and start focusing on running your business.</p>
+        </article>
 
-          <article class="service-card anim-scroll">
-            <div class="service-icon" aria-hidden="true">
-              <svg viewBox="0 0 32 32"><path d="M6 26V10l10-6 10 6v16M6 10l10 6 10-6M16 16v10" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </div>
-            <h3>Sales Tax Filing &amp; Compliance</h3>
+        <article class="service reveal">
+          <p class="service-num" aria-hidden="true">09</p>
+          <div class="service-body">
+            <h4>Sales Tax Filing &amp; Compliance</h4>
             <p class="service-lead">Multi-state nexus, changing rates, filing deadlines — we'll keep you compliant so you stay focused on revenue.</p>
             <ul>
               <li>Sales tax registration and nexus analysis across all states</li>
               <li>Monthly, quarterly, and annual return preparation and filing</li>
               <li>Audit support and exemption certificate management</li>
             </ul>
-            <p class="service-outcome">You'll never miss a sales tax deadline — or overpay because your setup was wrong.</p>
-          </article>
+          </div>
+          <p class="service-outcome">You'll never miss a sales tax deadline — or overpay because your setup was wrong.</p>
+        </article>
 
-          <article class="service-card anim-scroll">
-            <div class="service-icon" aria-hidden="true">
-              <svg viewBox="0 0 32 32"><path d="M6 28l5-8 5 4 5-10 5 6" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 4v24h24" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/><circle cx="16" cy="10" r="2" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M16 12v2" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
-            </div>
-            <h3>Catch-Up &amp; Cleanup Bookkeeping</h3>
+        <article class="service reveal">
+          <p class="service-num" aria-hidden="true">10</p>
+          <div class="service-body">
+            <h4>Catch-Up &amp; Cleanup Bookkeeping</h4>
             <p class="service-lead">Behind on your books? We'll dig in, sort it out, and get you back to current — no judgment, just results.</p>
             <ul>
               <li>Full historical reconstruction of transactions and reconciliations</li>
               <li>Uncategorized transaction cleanup and reclassification</li>
               <li>Chart of accounts restructuring for clarity and accuracy</li>
             </ul>
-            <p class="service-outcome">You'll go from "I have no idea where we stand" to clean, current financials.</p>
-          </article>
+          </div>
+          <p class="service-outcome">You'll go from "I have no idea where we stand" to clean, current financials.</p>
+        </article>
 
-        </div>
+        <p class="section-cta reveal"><a class="btn btn-primary" href="#contact">Schedule a Free Discovery Call</a></p>
       </div>
     </section>
 
-    <!-- ============ HOW IT WORKS ============ -->
-    <section class="how-it-works" id="how-it-works" aria-labelledby="hiw-heading">
-      <div class="container">
-        <p class="section-eyebrow anim-scroll">How It Works</p>
-        <h2 id="hiw-heading" class="section-heading anim-scroll">Three steps to financial clarity.</h2>
-        <div class="steps-grid">
-          <div class="step-card anim-scroll">
-            <span class="step-number" aria-hidden="true">01</span>
+    <section class="band band-ink how" id="how-it-works" aria-labelledby="hiw-heading">
+      <div class="wrap">
+        <p class="eyebrow reveal">How it works</p>
+        <h2 id="hiw-heading" class="reveal">Three steps to financial clarity.</h2>
+        <ol class="steps">
+          <li class="step reveal">
+            <span class="step-num" aria-hidden="true">01</span>
             <h3>Discovery Call</h3>
             <p>A free, no-pressure 30-minute conversation. We learn about your business, your pain points, and where you need help. You decide if it's a fit.</p>
-          </div>
-          <div class="step-connector anim-scroll" aria-hidden="true"></div>
-          <div class="step-card anim-scroll">
-            <span class="step-number" aria-hidden="true">02</span>
+          </li>
+          <li class="step reveal">
+            <span class="step-num" aria-hidden="true">02</span>
             <h3>Tailored Proposal</h3>
             <p>We put together a right-sized engagement — the exact scope, hours, and pricing your business needs. No bloated packages. No surprises.</p>
-          </div>
-          <div class="step-connector anim-scroll" aria-hidden="true"></div>
-          <div class="step-card anim-scroll">
-            <span class="step-number" aria-hidden="true">03</span>
+          </li>
+          <li class="step reveal">
+            <span class="step-num" aria-hidden="true">03</span>
             <h3>Embedded Partnership</h3>
             <p>We show up. We learn your business inside and out. We become a part of your team — not consultants who disappear after the engagement letter is signed.</p>
-          </div>
-        </div>
-        <div class="steps-cta anim-scroll">
-          <a href="#contact" class="btn btn-primary">Start With a Discovery Call</a>
-        </div>
+          </li>
+        </ol>
+        <p class="section-cta reveal"><a class="btn btn-primary" href="#contact">Start With a Discovery Call</a></p>
       </div>
     </section>
 
-    <!-- ============ ABOUT ============ -->
-    <section class="about" id="about" aria-labelledby="about-heading">
-      <div class="container">
-        <div class="about-layout">
-          <div class="about-content anim-scroll">
-            <p class="section-eyebrow">About Trident Ledger</p>
-            <h2 id="about-heading">Founded on a simple idea: growing businesses deserve financial leadership they can actually afford.</h2>
+    <section class="band band-paper about" id="about" aria-labelledby="about-heading">
+      <div class="wrap about-grid">
+        <div class="about-copy">
+          <p class="eyebrow reveal">About Trident Ledger</p>
+          <h2 id="about-heading" class="reveal">Founded on a simple idea: growing businesses deserve financial leadership they can actually afford.</h2>
+          <div class="reveal">
             <p>Trident Ledger was founded to solve a problem most growing businesses know too well: you've outgrown your bookkeeper, but you're not ready for a full-time controller or CFO. You're stuck in a gap — and nobody is telling you what your numbers actually mean.</p>
             <p>Most small and mid-sized businesses are still running their finances the same way they did ten years ago — manual processes, disconnected systems, and reports that take weeks to produce. Meanwhile, the tools to do it better, faster, and smarter already exist. Most businesses just don't have anyone to implement them.</p>
-            <p>That's why Trident Ledger exists. Founded by Ryan Wallace — an MBA and career controller who spent years running finance departments before building the firm — Trident Ledger combines deep controller-level experience with the latest in accounting technology and AI to deliver something most growing businesses have never had: a modern, efficient finance function that actually scales with them. We automate what should be automated, streamline what's slowing you down, and give you the financial clarity to make confident decisions.</p>
+            <p>That's why Trident Ledger exists. Founded by Ryan Wallace — an MBA and career controller with 14 years of controller experience, who spent years running finance departments before building the firm — Trident Ledger combines deep controller-level experience with the latest in accounting technology and AI to deliver something most growing businesses have never had: a modern, efficient finance function that actually scales with them. We automate what should be automated, streamline what's slowing you down, and give you the financial clarity to make confident decisions.</p>
             <p>No jargon. No fluff. No outdated processes. Just sharp financial leadership built for how business runs today.</p>
-            <div class="about-credentials">
-              <div class="credential">
-                <span class="credential-value">MBA</span>
-                <span class="credential-label">Founder &amp; Career Controller</span>
-              </div>
-              <div class="credential">
-                <span class="credential-value">Embedded</span>
-                <span class="credential-label">We Join Your Team</span>
-              </div>
-              <div class="credential">
-                <span class="credential-value">Nationwide</span>
-                <span class="credential-label">Remote &amp; On-Site</span>
-              </div>
-            </div>
           </div>
-          <div class="about-visual anim-scroll">
-            <div class="about-shape">
-              <img src="logo.png" alt="" class="about-mark" width="946" height="1013" loading="lazy" decoding="async"
-                   style="width:100%;height:auto;max-width:240px;margin:0 auto;display:block;opacity:0.18;">
+          <dl class="credentials reveal">
+            <div>
+              <dt>14 years</dt>
+              <dd>of controller experience</dd>
             </div>
+            <div>
+              <dt>MBA</dt>
+              <dd>Founder &amp; Career Controller</dd>
+            </div>
+            <div>
+              <dt>Embedded</dt>
+              <dd>We Join Your Team</dd>
+            </div>
+            <div>
+              <dt>Nationwide</dt>
+              <dd>Remote &amp; On-Site</dd>
+            </div>
+          </dl>
+        </div>
+        <div class="about-side reveal">
+          <div class="portrait">
+            <div class="portrait-mark" aria-hidden="true"></div>
+            <p class="owner-note">[PLACEHOLDER: a photograph of Ryan Wallace. Optional second line: one sentence in Ryan’s own words, if he wants a personal note beside the bio.]</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ============ TECHNOLOGY AND TOOLS ============ -->
-    <section class="tech-tools" id="technology" aria-labelledby="tech-heading">
-      <div class="container">
-        <p class="section-eyebrow anim-scroll">Technology &amp; Tools</p>
-        <h2 id="tech-heading" class="section-heading anim-scroll">Modern tools. Smarter workflows. Less manual work.</h2>
-        <p class="section-intro anim-scroll">We don't just do accounting — we build the systems and automations that make your finance function faster, leaner, and more reliable.</p>
-
+    <section class="band band-ink tech" id="technology" aria-labelledby="tech-heading">
+      <div class="wrap">
+        <p class="eyebrow reveal">Technology &amp; tools</p>
+        <h2 id="tech-heading" class="reveal">Modern tools. Smarter workflows. Less manual work.</h2>
+        <p class="lede reveal">We don't just do accounting — we build the systems and automations that make your finance function faster, leaner, and more reliable.</p>
         <div class="tech-grid">
-          <div class="tech-card anim-scroll">
-            <div class="tech-icon" aria-hidden="true">
-              <svg viewBox="0 0 32 32"><path d="M16 4v24M4 16h24M8 8l16 16M24 8L8 24" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.9"/></svg>
-            </div>
+          <article class="tech-card reveal">
+            <svg class="tech-icon" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 4v6M16 22v6M4 16h6M22 16h6M8.5 8.5l4 4M19.5 19.5l4 4M23.5 8.5l-4 4M12.5 19.5l-4 4"/></svg>
             <h3>AI-Powered Automation</h3>
             <p>We leverage artificial intelligence to automate transaction categorization, anomaly detection, reconciliation matching, and reporting — eliminating hours of manual work every month.</p>
-          </div>
-
-          <div class="tech-card anim-scroll">
-            <div class="tech-icon" aria-hidden="true">
-              <svg viewBox="0 0 32 32"><rect x="4" y="6" width="24" height="20" rx="2" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M4 12h24M10 6v6M16 17h6M16 21h4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
-            </div>
+          </article>
+          <article class="tech-card reveal">
+            <svg class="tech-icon" viewBox="0 0 32 32" aria-hidden="true"><rect x="4" y="6" width="24" height="20" rx="1.5"/><path d="M4 12h24M10 6v6M16 17h6M16 21h4"/></svg>
             <h3>Accounting Platforms</h3>
             <p>QuickBooks Online, QuickBooks Desktop, NetSuite, Xero, Sage — we work across all major platforms and can migrate, optimize, or clean up your existing setup.</p>
-          </div>
-
-          <div class="tech-card anim-scroll">
-            <div class="tech-icon" aria-hidden="true">
-              <svg viewBox="0 0 32 32"><path d="M6 22V10a2 2 0 012-2h16a2 2 0 012 2v12a2 2 0 01-2 2H8a2 2 0 01-2-2z" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M12 16l3 3 5-6" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </div>
+          </article>
+          <article class="tech-card reveal">
+            <svg class="tech-icon" viewBox="0 0 32 32" aria-hidden="true"><rect x="5" y="7" width="22" height="16" rx="1.5"/><path d="M11 15.5l3 3 6.5-7"/></svg>
             <h3>Workflow Automation</h3>
             <p>Automated invoice processing, bill pay workflows, approval routing, and scheduled reporting — so your team spends less time on repetitive tasks and more time on decisions.</p>
-          </div>
-
-          <div class="tech-card anim-scroll">
-            <div class="tech-icon" aria-hidden="true">
-              <svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="10" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M16 6v10l6 4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
-            </div>
+          </article>
+          <article class="tech-card reveal">
+            <svg class="tech-icon" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="10"/><path d="M16 10v6l4 3"/></svg>
             <h3>Real-Time Dashboards</h3>
             <p>Custom financial dashboards that give you live visibility into cash flow, revenue, expenses, and KPIs — not a static report that's already outdated by the time you see it.</p>
-          </div>
-
-          <div class="tech-card anim-scroll">
-            <div class="tech-icon" aria-hidden="true">
-              <svg viewBox="0 0 32 32"><path d="M8 8h16v16H8z" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M4 4h8v8H4zM20 4h8v8h-8zM4 20h8v8H4zM20 20h8v8h-8z" stroke="currentColor" stroke-width="1" fill="none" opacity="0.4"/><path d="M12 12l-4-4M20 12l4-4M12 20l-4 4M20 20l4 4" stroke="currentColor" stroke-width="1" fill="none" stroke-linecap="round" opacity="0.4"/></svg>
-            </div>
+          </article>
+          <article class="tech-card reveal">
+            <svg class="tech-icon" viewBox="0 0 32 32" aria-hidden="true"><rect x="12" y="12" width="8" height="8"/><rect x="4" y="4" width="6" height="6"/><rect x="22" y="4" width="6" height="6"/><rect x="4" y="22" width="6" height="6"/><rect x="22" y="22" width="6" height="6"/><path d="M10 7h12M7 10v12M25 10v12M10 25h12"/></svg>
             <h3>Integrations &amp; Connectivity</h3>
             <p>We connect your accounting system with payroll, CRM, e-commerce, banking, and payment platforms — creating a single source of truth across your entire business.</p>
-          </div>
-
-          <div class="tech-card anim-scroll">
-            <div class="tech-icon" aria-hidden="true">
-              <svg viewBox="0 0 32 32"><path d="M6 16c0-5.523 4.477-10 10-10s10 4.477 10 10" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/><path d="M10 16c0-3.314 2.686-6 6-6s6 2.686 6 6" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/><circle cx="16" cy="16" r="2" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M16 18v8M12 26h8" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
-            </div>
+          </article>
+          <article class="tech-card reveal">
+            <svg class="tech-icon" viewBox="0 0 32 32" aria-hidden="true"><path d="M8 22a6 6 0 0 1 1.2-11.7A7 7 0 0 1 22 12.2 5 5 0 0 1 24 22H8z"/></svg>
             <h3>Cloud-First Approach</h3>
             <p>Everything we build is cloud-based and accessible from anywhere. No desktop installs, no VPN headaches — just secure, modern infrastructure that works wherever you do.</p>
-          </div>
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- ============ FAQ ============ -->
-    <section class="faq" id="faq" aria-labelledby="faq-heading">
-      <div class="container">
-        <p class="section-eyebrow anim-scroll">FAQ</p>
-        <h2 id="faq-heading" class="section-heading anim-scroll">Answers to the questions we hear most.</h2>
-        <div class="faq-list">
+    <section class="band band-paper held" id="testimonials" aria-labelledby="held-heading">
+      <div class="wrap narrow">
+        <p class="eyebrow reveal">Client words</p>
+        <h2 id="held-heading" class="reveal">A place for proof, once it’s real.</h2>
+        <p class="owner-note reveal">[PLACEHOLDER: two or three client testimonials. Each needs the quote, the person’s name, their role, their company, and permission to publish. Nothing is shown here until Ryan supplies it.]</p>
+      </div>
+    </section>
 
-          <details class="faq-item anim-scroll">
+    <section class="band band-paper faq" id="faq" aria-labelledby="faq-heading">
+      <div class="wrap faq-layout">
+        <div>
+          <p class="eyebrow reveal">FAQ</p>
+          <h2 id="faq-heading" class="reveal">Answers to the questions we hear most.</h2>
+        </div>
+        <div class="faq-list">
+          <details class="faq-item reveal">
             <summary><h3>What's the difference between a fractional controller and a bookkeeper?</h3></summary>
             <p>A bookkeeper records transactions and keeps your books up to date. A controller interprets those numbers, manages the close process, builds forecasts, and provides the financial leadership to drive decisions. Think of it this way: a bookkeeper tells you what happened. A controller tells you what it means and what to do next.</p>
           </details>
-
-          <details class="faq-item anim-scroll">
+          <details class="faq-item reveal">
             <summary><h3>How much does this cost?</h3></summary>
             <p>Every engagement is scoped to fit your business. Most clients invest between $3,000 and $8,000 per month depending on complexity, volume, and the level of strategic support they need. We'll give you a clear, fixed quote after the discovery call — no hidden fees, no hourly surprises.</p>
           </details>
-
-          <details class="faq-item anim-scroll">
+          <details class="faq-item reveal">
             <summary><h3>How many hours per month do I need?</h3></summary>
             <p>It depends on your business. Some clients need 15–20 hours a month for close and reporting. Others need 30–40+ hours for deeper financial planning and team oversight. We'll recommend the right level during the discovery call — and we can always adjust as your needs change.</p>
           </details>
-
-          <details class="faq-item anim-scroll">
+          <details class="faq-item reveal">
             <summary><h3>Will you work with my existing accounting team?</h3></summary>
             <p>Absolutely. That's one of the things we do best. We'll manage and mentor your bookkeepers, set up quality controls, and fill the gaps in your current team — not replace people who are doing good work.</p>
           </details>
-
-          <details class="faq-item anim-scroll">
+          <details class="faq-item reveal">
             <summary><h3>What accounting software do you support?</h3></summary>
             <p>We work with QuickBooks Online, QuickBooks Desktop, NetSuite, Xero, and Sage. If you're on a different platform, let's talk — our team has worked across most major systems and can adapt quickly.</p>
           </details>
-
-          <details class="faq-item anim-scroll">
+          <details class="faq-item reveal">
             <summary><h3>How quickly can we get started?</h3></summary>
             <p>Most engagements are up and running within 1–2 weeks of signing the agreement. If your books are in rough shape, we may start with a cleanup phase before moving into ongoing services. Either way, you'll see progress fast.</p>
           </details>
-
-          <details class="faq-item anim-scroll">
+          <details class="faq-item reveal">
             <summary><h3>Do we replace your CPA?</h3></summary>
             <p>No — and we'll make their life a lot easier. Trident Ledger is not a CPA firm, but we work closely with your tax preparer to make sure they have clean, organized financials at year-end. Many of our clients tell us their CPA fees went <em>down</em> after working with us because the books are in much better shape.</p>
           </details>
-
-          <details class="faq-item anim-scroll">
+          <details class="faq-item reveal">
             <summary><h3>What if my books are a mess?</h3></summary>
             <p>That's not a dealbreaker — it's actually one of the most common starting points. We'll assess the damage, put together a cleanup plan, and get your books in shape before transitioning to ongoing monthly services. It's what we do.</p>
           </details>
-
         </div>
       </div>
     </section>
 
-    <!-- ============ CONTACT ============ -->
-    <section class="contact" id="contact" aria-labelledby="contact-heading">
-      <div class="container">
-        <div class="contact-layout">
-          <div class="contact-info anim-scroll">
-            <p class="section-eyebrow">Get in Touch</p>
-            <h2 id="contact-heading">Ready to get financial clarity?</h2>
-            <p>Schedule a free 30-minute discovery call. No pitch. No pressure. Just a conversation about where your business is and where you want it to go.</p>
-            <div class="contact-details">
-              <a href="mailto:ryan@tridentledger.com" class="contact-link">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 4l10 9 10-9"/></svg>
-                ryan@tridentledger.com
-              </a>
-              <a href="tel:+17323227615" class="contact-link">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-                (732) 322-7615
-              </a>
+    <section class="band band-ink contact" id="contact" aria-labelledby="contact-heading">
+      <div class="wrap contact-layout">
+        <div class="contact-info">
+          <p class="eyebrow reveal">Get in touch</p>
+          <h2 id="contact-heading" class="reveal">Ready to get financial clarity?</h2>
+          <p class="reveal">Schedule a free 30-minute discovery call. No pitch. No pressure. Just a conversation about where your business is and where you want it to go.</p>
+          <div class="contact-details reveal">
+            <a class="contact-link" href="mailto:ryan@tridentledger.com">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="M4 7l8 6 8-6"/></svg>
+              ryan@tridentledger.com
+            </a>
+            <a class="contact-link" href="tel:+17323227615">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 4h3l1.2 3.2-1.8 1.1a12 12 0 0 0 5.3 5.3l1.1-1.8L20 13v3a2 2 0 0 1-2.2 2A16 16 0 0 1 6 6.2 2 2 0 0 1 8 4z"/></svg>
+              (732) 322-7615
+            </a>
+          </div>
+          <p class="reveal"><a class="btn btn-primary" href="#contact-form">Book a Discovery Call</a></p>
+          <p class="owner-note owner-note-dark reveal">[PLACEHOLDER: scheduling link, such as a Calendly URL. Until Ryan adds one, this button scrolls to the form below.]</p>
+          <p class="owner-note owner-note-dark reveal">[PLACEHOLDER: LinkedIn or any other public profile URL Ryan wants linked from the site.]</p>
+        </div>
+
+        <div class="form-card reveal" id="contact-form">
+          <p class="form-intro">Prefer to write it out? Send the details and we'll come back within one business day.</p>
+          <form class="contact-form" action="https://formspree.io/f/xojkbnyv" method="POST" novalidate>
+            <input type="hidden" name="_subject" value="New discovery call request — tridentledger.com">
+            <div class="hp" aria-hidden="true">
+              <label for="company-website">Leave this field empty</label>
+              <input type="text" id="company-website" name="_gotcha" tabindex="-1" autocomplete="off">
             </div>
-            <!-- CALENDLY: swap this href for your Calendly URL when ready. -->
-            <a href="#contact-form" class="btn btn-primary contact-book-btn">Book a Discovery Call</a>
-          </div>
-          <div class="contact-form-wrap anim-scroll" id="contact-form">
-            <p class="form-intro">Prefer to write it out? Send the details and we'll come back within one business day.</p>
-            <form class="contact-form" action="https://formspree.io/f/xojkbnyv" method="POST" novalidate>
-              <input type="hidden" name="_subject" value="New discovery call request — tridentledger.com">
-              <div class="form-hp" aria-hidden="true">
-                <label for="company-website">Leave this field empty</label>
-                <input type="text" id="company-website" name="_gotcha" tabindex="-1" autocomplete="off">
-              </div>
-              <div class="form-group">
-                <label for="name">Name <span class="label-req" aria-hidden="true">*</span></label>
-                <input type="text" id="name" name="name" required autocomplete="name" aria-describedby="name-error">
-                <p class="field-error" id="name-error" hidden></p>
-              </div>
-              <div class="form-group">
-                <label for="company">Company</label>
-                <input type="text" id="company" name="company" autocomplete="organization">
-              </div>
-              <div class="form-group">
-                <label for="email">Email <span class="label-req" aria-hidden="true">*</span></label>
-                <input type="email" id="email" name="email" required autocomplete="email" aria-describedby="email-error">
-                <p class="field-error" id="email-error" hidden></p>
-              </div>
-              <div class="form-group">
-                <label for="phone">Phone <span class="label-optional">(optional)</span></label>
-                <input type="tel" id="phone" name="phone" autocomplete="tel">
-              </div>
-              <div class="form-group">
-                <label for="revenue">Annual Revenue Range</label>
-                <select id="revenue" name="revenue">
-                  <option value="" disabled selected>Select range</option>
-                  <option value="under-2m">Under $2M</option>
-                  <option value="2m-5m">$2M – $5M</option>
-                  <option value="5m-10m">$5M – $10M</option>
-                  <option value="10m-20m">$10M – $20M</option>
-                  <option value="20m-30m">$20M – $30M</option>
-                  <option value="30m-plus">$30M+</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="challenge">Primary Challenge</label>
-                <select id="challenge" name="challenge">
-                  <option value="" disabled selected>Select one</option>
-                  <option value="monthly-close">Monthly close is too slow or unreliable</option>
-                  <option value="cash-flow">Cash flow visibility / forecasting</option>
-                  <option value="reporting">Need better financial reporting</option>
-                  <option value="team-oversight">Accounting team needs oversight</option>
-                  <option value="systems">Accounting system cleanup or migration</option>
-                  <option value="strategic">CFO-level strategic support</option>
-                  <option value="cleanup">Books are a mess — need cleanup</option>
-                  <option value="other">Something else</option>
-                </select>
-              </div>
-              <div class="form-group form-group--full">
-                <label for="message">Message <span class="label-optional">(optional)</span></label>
-                <textarea id="message" name="message" rows="4"></textarea>
-              </div>
-              <button type="submit" class="btn btn-primary btn-submit">Send Message</button>
-              <p class="form-note">We'll respond within one business day. No newsletter, no list — just a reply from Ryan.</p>
-              <div class="form-status" role="status" aria-live="polite"></div>
-            </form>
-          </div>
+            <div class="field">
+              <label for="name">Name <span class="req" aria-hidden="true">*</span><span class="visually-hidden"> required</span></label>
+              <input type="text" id="name" name="name" required autocomplete="name" aria-describedby="name-error">
+              <p class="field-error" id="name-error" hidden></p>
+            </div>
+            <div class="field">
+              <label for="company">Company</label>
+              <input type="text" id="company" name="company" autocomplete="organization">
+            </div>
+            <div class="field">
+              <label for="email">Email <span class="req" aria-hidden="true">*</span><span class="visually-hidden"> required</span></label>
+              <input type="email" id="email" name="email" required autocomplete="email" inputmode="email" aria-describedby="email-error">
+              <p class="field-error" id="email-error" hidden></p>
+            </div>
+            <div class="field">
+              <label for="phone">Phone <span class="optional">(optional)</span></label>
+              <input type="tel" id="phone" name="phone" autocomplete="tel" inputmode="tel">
+            </div>
+            <div class="field">
+              <label for="revenue">Annual Revenue Range</label>
+              <select id="revenue" name="revenue">
+                <option value="">Select range</option>
+                <option value="under-2m">Under $2M</option>
+                <option value="2m-5m">$2M – $5M</option>
+                <option value="5m-10m">$5M – $10M</option>
+                <option value="10m-20m">$10M – $20M</option>
+                <option value="20m-30m">$20M – $30M</option>
+                <option value="30m-plus">$30M+</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="challenge">Primary Challenge</label>
+              <select id="challenge" name="challenge">
+                <option value="">Select one</option>
+                <option value="monthly-close">Monthly close is too slow or unreliable</option>
+                <option value="cash-flow">Cash flow visibility / forecasting</option>
+                <option value="reporting">Need better financial reporting</option>
+                <option value="team-oversight">Accounting team needs oversight</option>
+                <option value="systems">Accounting system cleanup or migration</option>
+                <option value="strategic">CFO-level strategic support</option>
+                <option value="cleanup">Books are a mess — need cleanup</option>
+                <option value="other">Something else</option>
+              </select>
+            </div>
+            <div class="field field-full">
+              <label for="message">Message <span class="optional">(optional)</span></label>
+              <textarea id="message" name="message" rows="5"></textarea>
+            </div>
+            <button class="btn btn-primary btn-submit field-full" type="submit">Send Message</button>
+            <p class="form-note field-full">We'll respond within one business day. No newsletter, no list — just a reply from Ryan.</p>
+            <div class="form-status field-full" role="status" aria-live="polite"></div>
+          </form>
         </div>
       </div>
     </section>
-
   </main>
 
-  <!-- ============ FOOTER ============ -->
   <footer class="site-footer">
-    <div class="container footer-inner">
-      <div class="footer-brand">
-        <a href="#top" class="logo" aria-label="Trident Ledger — Home">
-          <img src="logo-small.png" alt="" class="logo-icon" width="28" height="30" loading="lazy" decoding="async">
-          <span class="logo-text">Trident Ledger</span>
-        </a>
-        <p class="footer-tagline">Modern financial leadership for growing businesses.</p>
+    <div class="wrap">
+      <p class="footer-display" aria-hidden="true">Trident</p>
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="logo" href="#top">
+            <img class="logo-img" src="logo-small.png" alt="" width="200" height="214">
+            <span class="logo-word">Trident Ledger</span>
+          </a>
+          <p class="footer-tag">Modern financial leadership for growing businesses.</p>
+          <p>Trident Ledger, LLC · New Jersey</p>
+          <p class="owner-note owner-note-dark">[PLACEHOLDER: city, street address, and ZIP, plus business hours if Ryan wants them published. The current site has no street address, so none is shown.]</p>
+        </div>
+        <nav class="footer-nav" aria-label="Footer">
+          <a href="#services">Services</a>
+          <a href="#who">Who we work with</a>
+          <a href="#how-it-works">How it works</a>
+          <a href="#about">About</a>
+          <a href="#technology">Technology</a>
+          <a href="#faq">FAQ</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <div class="footer-contact">
+          <p><a href="mailto:ryan@tridentledger.com">ryan@tridentledger.com</a></p>
+          <p><a href="tel:+17323227615">(732) 322-7615</a></p>
+        </div>
       </div>
-      <nav class="footer-nav" aria-label="Footer navigation">
-        <a href="#services">Services</a>
-        <a href="#how-it-works">How It Works</a>
-        <a href="#about">About</a>
-        <a href="#technology">Technology</a>
-        <a href="#faq">FAQ</a>
-        <a href="#contact">Contact</a>
-      </nav>
-      <div class="footer-contact">
-        <p><a href="mailto:ryan@tridentledger.com">ryan@tridentledger.com</a></p>
-        <p><a href="tel:+17323227615">(732) 322-7615</a></p>
-      </div>
-      <p class="footer-legal">&copy; <span id="footer-year"></span> Trident Ledger, LLC. All rights reserved.</p>
+      <p class="footer-legal">&copy; <span id="footer-year">2026</span> Trident Ledger, LLC. All rights reserved. Design proposal for Ryan Wallace — this preview is not the live site.</p>
     </div>
   </footer>
 
-  <script src="main.js"></script>
+  <script src="main.js" defer></script>
 </body>
 </html>

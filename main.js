@@ -1,223 +1,240 @@
-/* ========================================
-   TRIDENT LEDGER — MAIN JS
-   Improved build, Jul 28 2026. See CHANGES.md.
-   ======================================== */
+/* Trident Ledger — navigation, motion, and the Formspree contact form. */
+(function () {
+  "use strict";
 
-document.addEventListener('DOMContentLoaded', () => {
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var yearEl = document.getElementById("footer-year");
+  if (yearEl) yearEl.textContent = String(new Date().getFullYear());
 
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var header = document.querySelector(".site-header");
+  var toggle = document.querySelector(".nav-toggle");
+  var navLinks = document.querySelector(".nav-links");
+  var main = document.querySelector("main");
+  var footer = document.querySelector(".site-footer");
 
-  // --- Dynamic Footer Year ---
-  const yearEl = document.getElementById('footer-year');
-  if (yearEl) yearEl.textContent = new Date().getFullYear();
-
-  /* ----------------------------------------
-     Mobile Nav
-     Closes on Escape, on outside click, and on
-     link activation. Focus returns to the toggle
-     so keyboard users don't get dropped.
-     ---------------------------------------- */
-  const toggle = document.querySelector('.nav-toggle');
-  const navLinks = document.querySelector('.nav-links');
+  function setMenu(open, returnFocus) {
+    if (!toggle || !navLinks) return;
+    navLinks.classList.toggle("is-open", open);
+    toggle.setAttribute("aria-expanded", open ? "true" : "false");
+    var label = toggle.querySelector(".nav-toggle-label");
+    if (label) label.textContent = open ? "Close" : "Menu";
+    document.body.style.overflow = open ? "hidden" : "";
+    if (main) main.inert = open;
+    if (footer) footer.inert = open;
+    if (returnFocus) toggle.focus();
+    if (open) {
+      var first = navLinks.querySelector("a");
+      if (first) first.focus();
+    }
+  }
 
   if (toggle && navLinks) {
-    const setNav = (open, returnFocus) => {
-      navLinks.classList.toggle('open', open);
-      toggle.setAttribute('aria-expanded', String(open));
-      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
-      if (returnFocus) toggle.focus();
+    toggle.addEventListener("click", function () {
+      setMenu(!navLinks.classList.contains("is-open"));
+    });
+
+    navLinks.querySelectorAll("a").forEach(function (link) {
+      link.addEventListener("click", function () { setMenu(false); });
+    });
+
+    document.addEventListener("keydown", function (e) {
+      if (!navLinks.classList.contains("is-open")) return;
+      if (e.key === "Escape") {
+        setMenu(false, true);
+        return;
+      }
+      if (e.key !== "Tab") return;
+      var items = [toggle].concat(Array.prototype.slice.call(navLinks.querySelectorAll("a")));
+      var first = items[0];
+      var last = items[items.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    });
+
+    window.addEventListener("resize", function () {
+      if (window.innerWidth >= 1080 && navLinks.classList.contains("is-open")) setMenu(false);
+    });
+  }
+
+  if (header) {
+    var ticking = false;
+    var onScroll = function () {
+      header.classList.toggle("is-scrolled", window.scrollY > 8);
+      ticking = false;
     };
-
-    toggle.addEventListener('click', () => {
-      setNav(!navLinks.classList.contains('open'));
-    });
-
-    navLinks.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => setNav(false));
-    });
-
-    document.addEventListener('keydown', e => {
-      if (e.key === 'Escape' && navLinks.classList.contains('open')) setNav(false, true);
-    });
-
-    document.addEventListener('click', e => {
-      if (!navLinks.classList.contains('open')) return;
-      if (!navLinks.contains(e.target) && !toggle.contains(e.target)) setNav(false);
-    });
+    window.addEventListener("scroll", function () {
+      if (!ticking) {
+        window.requestAnimationFrame(onScroll);
+        ticking = true;
+      }
+    }, { passive: true });
+    onScroll();
   }
 
-  /* ----------------------------------------
-     Scroll-Triggered Animations
-     ---------------------------------------- */
-  const scrollElements = document.querySelectorAll('.anim-scroll');
-
-  if (reduceMotion || !('IntersectionObserver' in window)) {
-    scrollElements.forEach(el => el.classList.add('visible'));
-  } else {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        const siblings = Array.from(entry.target.parentElement.querySelectorAll('.anim-scroll'));
-        const delay = Math.min(siblings.indexOf(entry.target), 6) * 80;
-        setTimeout(() => entry.target.classList.add('visible'), delay);
-        observer.unobserve(entry.target);
-      });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-
-    scrollElements.forEach(el => observer.observe(el));
+  var hero = document.querySelector(".hero");
+  if (hero && !reduce && window.matchMedia("(pointer: fine)").matches) {
+    hero.addEventListener("pointermove", function (e) {
+      var rect = hero.getBoundingClientRect();
+      var x = ((e.clientX - rect.left) / rect.width) * 100;
+      var y = ((e.clientY - rect.top) / rect.height) * 100;
+      hero.style.setProperty("--mx", x.toFixed(1) + "%");
+      hero.style.setProperty("--my", y.toFixed(1) + "%");
+    }, { passive: true });
   }
 
-  /* ----------------------------------------
-     Smooth Scroll
-     Moves focus to the destination so keyboard
-     and screen reader users land where sighted
-     users land, and keeps the URL shareable.
-     ---------------------------------------- */
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      const href = this.getAttribute('href');
-      if (!href || href === '#') return;
-
-      const target = document.querySelector(href);
-      if (!target) return; // let the browser handle it rather than swallowing the click
-
+  document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+    anchor.addEventListener("click", function (e) {
+      var href = anchor.getAttribute("href");
+      if (!href || href === "#") return;
+      var target = document.querySelector(href);
+      if (!target) return;
       e.preventDefault();
-      const top = target.getBoundingClientRect().top + window.pageYOffset - 80;
-      window.scrollTo({ top, behavior: reduceMotion ? 'auto' : 'smooth' });
-
-      if (history.pushState) history.pushState(null, '', href);
-
-      if (!target.hasAttribute('tabindex')) target.setAttribute('tabindex', '-1');
+      var top = target.getBoundingClientRect().top + window.scrollY - 76;
+      window.scrollTo({ top: top, behavior: reduce ? "auto" : "smooth" });
+      if (history.pushState) history.pushState(null, "", href);
+      if (!target.hasAttribute("tabindex")) target.setAttribute("tabindex", "-1");
       target.focus({ preventScroll: true });
     });
   });
 
-  /* ----------------------------------------
-     Header Elevation
-     Class toggle instead of writing inline
-     styles on every scroll event.
-     ---------------------------------------- */
-  const header = document.querySelector('.site-header');
-  if (header) {
-    let ticking = false;
-    const update = () => {
-      header.classList.toggle('is-scrolled', window.pageYOffset > 50);
-      ticking = false;
-    };
-    window.addEventListener('scroll', () => {
-      if (!ticking) { window.requestAnimationFrame(update); ticking = true; }
-    }, { passive: true });
-    update();
-  }
+  var sections = ["services", "who", "how-it-works", "about", "technology", "faq", "contact"]
+    .map(function (id) { return document.getElementById(id); })
+    .filter(Boolean);
+  var navAnchors = Array.prototype.slice.call(document.querySelectorAll(".nav-links a[href^='#']"));
 
-  /* ----------------------------------------
-     Contact Form
-     Validates with real messages, submits over
-     fetch so the visitor stays on the page, and
-     falls back to a normal POST if fetch fails.
-     ---------------------------------------- */
-  const form = document.querySelector('.contact-form');
-  if (form) {
-    const status = form.querySelector('.form-status');
-    const submitBtn = form.querySelector('.btn-submit');
-
-    const showStatus = (msg, kind) => {
-      if (!status) return;
-      status.textContent = msg;
-      status.classList.remove('is-success', 'is-error');
-      status.classList.add('is-visible', kind === 'success' ? 'is-success' : 'is-error');
-    };
-
-    const setError = (input, msg) => {
-      const slot = document.getElementById(input.id + '-error');
-      if (msg) {
-        input.setAttribute('aria-invalid', 'true');
-        if (slot) { slot.textContent = msg; slot.hidden = false; }
-      } else {
-        input.removeAttribute('aria-invalid');
-        if (slot) { slot.textContent = ''; slot.hidden = true; }
-      }
-      return !msg;
-    };
-
-    const validateField = (input) => {
-      const value = input.value.trim();
-      if (!value) {
-        return setError(input, input.id === 'email'
-          ? 'Please enter your email so we can reply.'
-          : 'Please enter your name.');
-      }
-      if (input.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value)) {
-        return setError(input, 'That email address doesn’t look right — mind checking it?');
-      }
-      return setError(input, null);
-    };
-
-    const required = ['name', 'email']
-      .map(id => form.querySelector('#' + id))
-      .filter(Boolean);
-
-    // Clear an error as soon as the visitor fixes it
-    required.forEach(input => {
-      input.addEventListener('blur', () => validateField(input));
-      input.addEventListener('input', () => {
-        if (input.hasAttribute('aria-invalid')) validateField(input);
+  if ("IntersectionObserver" in window && sections.length) {
+    var currentId = "";
+    var spy = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) currentId = entry.target.id;
       });
-    });
-
-    form.addEventListener('submit', async (e) => {
-      const results = required.map(validateField);
-
-      if (results.includes(false)) {
-        e.preventDefault();
-        const firstBad = required.find(i => i.hasAttribute('aria-invalid'));
-        if (firstBad) firstBad.focus();
-        showStatus('Please fix the highlighted fields and try again.', 'error');
-        return;
-      }
-
-      // No fetch support: let the browser do a normal POST to Formspree
-      if (!window.fetch) return;
-
-      e.preventDefault();
-      if (submitBtn) {
-        submitBtn.setAttribute('aria-busy', 'true');
-        submitBtn.textContent = 'Sending…';
-      }
-
-      try {
-        const res = await fetch(form.action, {
-          method: 'POST',
-          body: new FormData(form),
-          headers: { Accept: 'application/json' }
-        });
-
-        if (!res.ok) throw new Error('Bad response');
-
-        form.classList.add('is-sent');
-        showStatus(
-          'Thanks — your message is in. Ryan will get back to you within one business day. ' +
-          'If it’s urgent, call (732) 322-7615.',
-          'success'
-        );
-        if (status) {
-          status.setAttribute('tabindex', '-1');
-          status.focus({ preventScroll: true });
-        }
-        form.reset();
-      } catch (err) {
-        showStatus(
-          'Something went wrong sending that. Please email ryan@tridentledger.com ' +
-          'or call (732) 322-7615 and we’ll pick it up straight away.',
-          'error'
-        );
-      } finally {
-        if (submitBtn) {
-          submitBtn.removeAttribute('aria-busy');
-          submitBtn.textContent = 'Send Message';
-        }
-      }
-    });
+      navAnchors.forEach(function (link) {
+        var on = link.getAttribute("href") === "#" + currentId;
+        if (on) link.setAttribute("aria-current", "true");
+        else link.removeAttribute("aria-current");
+      });
+    }, { rootMargin: "-40% 0px -50% 0px", threshold: 0.01 });
+    sections.forEach(function (section) { spy.observe(section); });
   }
 
-});
+  if (!reduce && "IntersectionObserver" in window) {
+    var reveals = document.querySelectorAll(".reveal");
+    var seen = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-in");
+        seen.unobserve(entry.target);
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
+    reveals.forEach(function (el) { seen.observe(el); });
+  } else {
+    document.querySelectorAll(".reveal").forEach(function (el) { el.classList.add("is-in"); });
+  }
+
+  var form = document.querySelector(".contact-form");
+  if (!form) return;
+
+  var status = form.querySelector(".form-status");
+  var submitBtn = form.querySelector(".btn-submit");
+
+  function showStatus(message, kind) {
+    if (!status) return;
+    status.textContent = message;
+    status.classList.remove("is-success", "is-error");
+    status.classList.add(kind === "success" ? "is-success" : "is-error");
+  }
+
+  function setError(input, message) {
+    var slot = document.getElementById(input.id + "-error");
+    if (message) {
+      input.setAttribute("aria-invalid", "true");
+      if (slot) {
+        slot.textContent = message;
+        slot.hidden = false;
+      }
+      return false;
+    }
+    input.removeAttribute("aria-invalid");
+    if (slot) {
+      slot.textContent = "";
+      slot.hidden = true;
+    }
+    return true;
+  }
+
+  function validateField(input) {
+    var value = input.value.trim();
+    if (!value) {
+      return setError(input, input.id === "email"
+        ? "Please enter your email so we can reply."
+        : "Please enter your name.");
+    }
+    if (input.type === "email" && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value)) {
+      return setError(input, "That email address doesn’t look right — mind checking it?");
+    }
+    return setError(input, "");
+  }
+
+  var required = ["name", "email"]
+    .map(function (id) { return form.querySelector("#" + id); })
+    .filter(Boolean);
+
+  required.forEach(function (input) {
+    input.addEventListener("blur", function () { validateField(input); });
+    input.addEventListener("input", function () {
+      if (input.hasAttribute("aria-invalid")) validateField(input);
+    });
+  });
+
+  form.addEventListener("submit", function (e) {
+    var results = required.map(validateField);
+    if (results.indexOf(false) !== -1) {
+      e.preventDefault();
+      var firstBad = required.filter(function (input) { return input.hasAttribute("aria-invalid"); })[0];
+      if (firstBad) firstBad.focus();
+      showStatus("Please fix the highlighted fields and try again.", "error");
+      return;
+    }
+
+    if (!window.fetch) return;
+
+    e.preventDefault();
+    if (submitBtn) {
+      submitBtn.setAttribute("aria-busy", "true");
+      submitBtn.textContent = "Sending…";
+    }
+
+    fetch(form.action, {
+      method: "POST",
+      body: new FormData(form),
+      headers: { Accept: "application/json" }
+    }).then(function (res) {
+      if (!res.ok) throw new Error("Bad response");
+      form.classList.add("is-sent");
+      showStatus(
+        "Thanks — your message is in. Ryan will get back to you within one business day. If it’s urgent, call (732) 322-7615.",
+        "success"
+      );
+      if (status) {
+        status.setAttribute("tabindex", "-1");
+        status.focus({ preventScroll: true });
+      }
+      form.reset();
+    }).catch(function () {
+      showStatus(
+        "Something went wrong sending that. Please email ryan@tridentledger.com or call (732) 322-7615 and we’ll pick it up straight away.",
+        "error"
+      );
+    }).then(function () {
+      if (submitBtn) {
+        submitBtn.removeAttribute("aria-busy");
+        submitBtn.textContent = "Send Message";
+      }
+    });
+  });
+})();
